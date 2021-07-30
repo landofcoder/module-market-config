@@ -1,0 +1,25 @@
+{
+    "name": "landofcoder/module-market-config",
+    "description": "Manage Seller Config.",
+    "type": "magento2-module",
+    "version": "1.0.0",
+    "require": {
+        "landofcoder/module-marketplace": "*"
+    },
+    "authors": [
+        {
+            "name": "landofcoder",
+            "homepage": "https://landofcoder.com",
+            "email": "landofcoder@gmail.com"
+        }
+    ],
+    "autoload": {
+        "files": [
+            "registration.php"
+        ],
+        "psr-4": {
+            "Lof\\MarketConfig\\": ""
+        }
+    }
+}
+
