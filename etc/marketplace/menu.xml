@@ -24,7 +24,7 @@
     <menu>
         <add id="Lof_MarketConfig::config"
              title="Configuration"
-             icon="fa fa-settings"
+             icon="fa fa-cogs"
              module="Lof_MarketConfig"
              action="config"
              sortOrder="9999"
