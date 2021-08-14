@@ -24,6 +24,8 @@ abstract class AbstractScopeConfig extends \Lof\MarketConfig\Controller\Marketpl
      * @param \Lof\MarketConfig\Model\Config\Structure $configStructure
      * @param ConfigSectionChecker $sectionChecker
      * @param \Lof\MarketConfig\Model\Config $backendConfig
+     * @param \Magento\Customer\Model\Session $customerSession
+     * @param \Magento\Customer\Model\Url $customerUrl
      */
     public function __construct(
         \Magento\Framework\App\Action\Context $context,
