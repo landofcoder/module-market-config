@@ -35,98 +35,100 @@ class InstallSchema implements InstallSchemaInterface
         SchemaSetupInterface $setup,
         ModuleContextInterface $context
     ) {
-        $table_lof_marketplace_config = $setup->getConnection()
-            ->newTable($setup->getTable('lof_marketplace_config'))
-            ->addColumn(
-                'config_id',
-                \Magento\Framework\DB\Ddl\Table::TYPE_INTEGER,
-                null,
-                [
-                    'identity' => true,
-                    'unsigned' => false,
-                    'nullable' => false,
-                    'primary' => true
-                ],
-                'Entity ID'
-            )->addColumn(
-                'seller_id',
-                \Magento\Framework\DB\Ddl\Table::TYPE_INTEGER,
-                null,
-                [
-                    'unsigned' => true,
-                    'nullable' => false,
-                    'identity' => false
-                ],
-                'Seller ID'
-            )->addColumn(
-                'scope',
-                \Magento\Framework\DB\Ddl\Table::TYPE_TEXT,
-                8,
-                [
-                    'nullable' => true
-                ],
-                'Resource ID'
-            )->addColumn(
-                'scope_id',
-                \Magento\Framework\DB\Ddl\Table::TYPE_INTEGER,
-                null,
-                [
-                    'unsigned' => true,
-                    'nullable' => false,
-                    'default' => 0
-                ],
-                'Config Scope ID	'
-            )->addColumn(
-                'path',
-                \Magento\Framework\DB\Ddl\Table::TYPE_TEXT,
-                255,
-                [
-                    'nullable' => false,
-                    'default' => 'general'
-                ],
-                'Config Path'
-            )->addColumn(
-                'value',
-                \Magento\Framework\DB\Ddl\Table::TYPE_TEXT,
-                '1M',
-                [
-                    'nullable' => true
-                ],
-                'Config Value'
-            )->addColumn(
-                'updated_at',
-                \Magento\Framework\DB\Ddl\Table::TYPE_TIMESTAMP,
-                null,
-                [
-                    'nullable' => false,
-                    'default' => \Magento\Framework\DB\Ddl\Table::TIMESTAMP_INIT_UPDATE
-                ],
-                'Updated At'
-            )->addIndex(
-                $setup->getIdxName('lof_marketplace_config', ['seller_id']),
-                ['seller_id']
-            )->addIndex(
-                $setup->getIdxName('lof_marketplace_config', ['scope']),
-                ['scope']
-            )->addIndex(
-                $setup->getIdxName('lof_marketplace_config', ['scope_id']),
-                ['scope_id']
-            )->addIndex(
-                $setup->getIdxName('lof_marketplace_config', ['path']),
-                ['path']
-            )->addForeignKey(
-                $setup->getFkName(
-                    'lof_marketplace_config',
-                    'seller_id',
-                    'lof_marketplace_seller',
-                    'seller_id'
-                ),
-                'seller_id',
-                $setup->getTable('lof_marketplace_seller'),
-                'seller_id',
-                \Magento\Framework\DB\Ddl\Table::ACTION_CASCADE
-            );
+        $setup->startSetup();
 
-        $setup->getConnection()->createTable($table_lof_marketplace_config);
+        $table_lof_marketplace_seller_settings = $setup->getTable("lof_marketplace_seller_settings");
+
+        $setup->getConnection()->addColumn(
+            $table_lof_marketplace_seller_settings,
+            'scope',
+            [
+                'type' => \Magento\Framework\DB\Ddl\Table::TYPE_TEXT,
+                'length' => 8,
+                'nullable' => true,
+                'comment' => 'Resource ID'
+            ]
+        );
+
+        $setup->getConnection()->addColumn(
+            $table_lof_marketplace_seller_settings,
+            'scope_id',
+            [
+                'type' => \Magento\Framework\DB\Ddl\Table::TYPE_INTEGER,
+                'nullable' => false,
+                'unsigned' => true,
+                'default' => 0,
+                'comment' => 'Config Scope ID'
+            ]
+        );
+
+        $setup->getConnection()->addColumn(
+            $table_lof_marketplace_seller_settings,
+            'path',
+            [
+                'type' => \Magento\Framework\DB\Ddl\Table::TYPE_TEXT,
+                'length' => 255,
+                'nullable' => false,
+                'default' => 'general',
+                'comment' => 'Config Path'
+            ]
+        );
+
+        $setup->getConnection()->addColumn(
+            $table_lof_marketplace_seller_settings,
+            'value',
+            [
+                'type' => \Magento\Framework\DB\Ddl\Table::TYPE_TEXT,
+                'length' => '1M',
+                'nullable' => true,
+                'comment' => 'Config Value'
+            ]
+        );
+
+        $setup->getConnection()->addColumn(
+            $table_lof_marketplace_seller_settings,
+            'updated_at',
+            [
+                'type' => \Magento\Framework\DB\Ddl\Table::TYPE_TIMESTAMP,
+                'nullable' => false,
+                'default' => \Magento\Framework\DB\Ddl\Table::TIMESTAMP_INIT_UPDATE,
+                'comment' => 'Updated At'
+            ]
+        );
+
+        $setup->getConnection()->addIndex(
+            $table_lof_marketplace_seller_settings,
+            $setup->getIdxName($table_lof_marketplace_seller_settings, ['seller_id']),
+            ['seller_id']
+        );
+
+        $setup->getConnection()->addIndex(
+            $table_lof_marketplace_seller_settings,
+            $setup->getIdxName($table_lof_marketplace_seller_settings, ['scope']),
+            ['scope']
+        );
+
+        $setup->getConnection()->addIndex(
+            $table_lof_marketplace_seller_settings,
+            $setup->getIdxName($table_lof_marketplace_seller_settings, ['scope_id']),
+            ['scope_id']
+        );
+
+        $setup->getConnection()->addIndex(
+            $table_lof_marketplace_seller_settings,
+            $setup->getIdxName($table_lof_marketplace_seller_settings, ['path']),
+            ['path']
+        );
+
+        $setup->getConnection()->addForeignKey(
+            $setup->getFkName('lof_marketplace_seller_settings', 'seller_id', 'lof_marketplace_seller', 'seller_id'),
+            'lof_marketplace_seller_settings',
+            'seller_id',
+            $setup->getTable('lof_marketplace_seller'),
+            'seller_id',
+            \Magento\Framework\DB\Ddl\Table::ACTION_CASCADE
+        );
+
+        $setup->endSetup();
     }
 }
