@@ -22,6 +22,7 @@
 namespace Lof\MarketConfig\Controller\Marketplace\System;
 
 use Magento\Framework\Exception\LocalizedException;
+use Magento\Framework\App\RequestInterface;
 
 /**
  * System Configuration Abstract Controller
