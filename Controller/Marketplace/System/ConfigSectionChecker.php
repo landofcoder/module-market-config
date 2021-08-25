@@ -25,19 +25,19 @@ use Magento\Framework\Exception\NotFoundException;
 
 /**
  * @deprecated 101.0.0 - unused class.
- * @see \Lof\MarketConfig\Model\Config\Structure\Element\Section::isAllowed()
+ * @see \Magento\Config\Model\Config\Structure\Element\Section::isAllowed()
  */
 class ConfigSectionChecker
 {
     /**
-     * @var \Lof\MarketConfig\Model\Config\Structure
+     * @var \Magento\Config\Model\Config\Structure
      */
     protected $_configStructure;
 
     /**
-     * @param \Lof\MarketConfig\Model\Config\Structure $configStructure
+     * @param \Magento\Config\Model\Config\Structure $configStructure
      */
-    public function __construct(\Lof\MarketConfig\Model\Config\Structure $configStructure)
+    public function __construct(\Magento\Config\Model\Config\Structure $configStructure)
     {
         $this->_configStructure = $configStructure;
     }

@@ -24,9 +24,9 @@ class Index extends AbstractScopeConfig implements HttpGetActionInterface
      */
     public function __construct(
         \Magento\Framework\App\Action\Context $context,
-        \Lof\MarketConfig\Model\Config\Structure $configStructure,
+        \Magento\Config\Model\Config\Structure $configStructure,
         \Magento\Config\Controller\Adminhtml\System\ConfigSectionChecker $sectionChecker,
-        \Lof\MarketConfig\Model\Config $backendConfig,
+        \Magento\Config\Model\Config $backendConfig,
         \Magento\Customer\Model\Session $customerSession,
         \Magento\Customer\Model\Url $customerUrl,
         \Magento\Framework\View\Result\PageFactory $resultForwardFactory

@@ -15,23 +15,23 @@ use Lof\MarketConfig\Controller\Marketplace\System\ConfigSectionChecker;
 abstract class AbstractScopeConfig extends \Lof\MarketConfig\Controller\Marketplace\System\AbstractConfig
 {
     /**
-     * @var \Lof\MarketConfig\Model\Config
+     * @var \Magento\Config\Model\Config
      */
     protected $_backendConfig;
 
     /**
      * @param \Magento\Framework\App\Action\Context $context
-     * @param \Lof\MarketConfig\Model\Config\Structure $configStructure
+     * @param \Magento\Config\Model\Config\Structure $configStructure
      * @param ConfigSectionChecker $sectionChecker
-     * @param \Lof\MarketConfig\Model\Config $backendConfig
+     * @param \Magento\Config\Model\Config $backendConfig
      * @param \Magento\Customer\Model\Session $customerSession
      * @param \Magento\Customer\Model\Url $customerUrl
      */
     public function __construct(
         \Magento\Framework\App\Action\Context $context,
-        \Lof\MarketConfig\Model\Config\Structure $configStructure,
+        \Magento\Config\Model\Config\Structure $configStructure,
         ConfigSectionChecker $sectionChecker,
-        \Lof\MarketConfig\Model\Config $backendConfig,
+        \Magento\Config\Model\Config $backendConfig,
         \Magento\Customer\Model\Session $customerSession,
         \Magento\Customer\Model\Url $customerUrl
     ) {

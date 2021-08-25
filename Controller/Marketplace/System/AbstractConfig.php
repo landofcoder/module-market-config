@@ -36,7 +36,7 @@ abstract class AbstractConfig extends \Magento\Framework\App\Action\Action
 {
     const FLAG_IS_URLS_CHECKED = 'check_url_settings';
     /**
-     * @var \Lof\MarketConfig\Model\Config\Structure
+     * @var \Magento\Config\Model\Config\Structure
      */
     protected $_configStructure;
 
@@ -57,12 +57,12 @@ abstract class AbstractConfig extends \Magento\Framework\App\Action\Action
 
     /**
      * @param \Magento\Backend\App\Action\Context $context
-     * @param \Lof\MarketConfig\Model\Config\Structure $configStructure
+     * @param \Magento\Config\Model\Config\Structure $configStructure
      * @param mixed $sectionChecker - deprecated
      */
     public function __construct(
         \Magento\Framework\App\Action\Context $context,
-        \Lof\MarketConfig\Model\Config\Structure $configStructure,
+        \Magento\Config\Model\Config\Structure $configStructure,
         \Magento\Customer\Model\Session $customerSession,
         \Magento\Customer\Model\Url $customerUrl,
         $sectionChecker
